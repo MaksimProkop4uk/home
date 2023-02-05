@@ -1,5 +1,10 @@
-from random import randint
-lst = [randint(0, 100) for i in range(100)]
-#print(lst)
-n = int(input('введите число из диапазона (0-100): '))
-print(lst, lst.count(n), sep = '\n')
+import re
+
+s = input('Введите слово ')
+eng = {'[AEIOULNSTRaeioulnst]': '1', '[DGdg]': '2', '[BCMPbcmp]': '3', '[FHVWYfhvwy]': '4', 'Kk': '5', '[JXjx]': '8', '[QZqz]': '19'} #создал словарь для английского алфавита
+for k in eng:
+    s = re.sub(k, eng[k], s) # подсмотрел как можно использовать функцию re для словаря
+rus = {'[АВЕИНОРСТавеинорст]': '1', '[ДКЛМПУдклмпу]': '2', '[БГЁЬЯбгЁья]': '3', '[ЙЫйы]': '4', '[ЖЗХЦЧжзхцч]': '5', '[ШЭЮшэю]': '8', '[ФЩЪфщъ]': '19'}# создал словарь для русского алфавита
+for k in rus:
+    s = re.sub(k, rus[k], s)
+print(sum(map(int, s))) # вывожу сумму
