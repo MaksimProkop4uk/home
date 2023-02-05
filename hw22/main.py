@@ -5,8 +5,12 @@
 
 
 a, b = map(int, input('введите подсказки ').split())
-res = []
+c = 0
 for i in range(a + b):
-    if i == (a * i - b)**0.5:
-        res.append(i)
-print(*res if len(res) == 2 else res + res)
+    if c:
+        break
+    for j in range(a + b):
+        if i + j == a and i * j == b:
+            c = 1
+            print(*sorted([i, j]))
+            break
